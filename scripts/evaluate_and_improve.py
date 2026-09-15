@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from collections import Counter
 import json
-from pathlib import Path
 import sys
+from collections import Counter
+from pathlib import Path
 
 import joblib
 import pandas as pd
@@ -14,14 +14,16 @@ from sklearn.model_selection import train_test_split
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from classical_absa.aspect_extractor import CRFAspectExtractor  # noqa: E402
-from classical_absa.evaluation_metrics import (  # noqa: E402
+from classical_absa.aspect_extractor import CRFAspectExtractor
+from classical_absa.evaluation_metrics import (
     end_to_end_metrics,
     sentiment_metrics,
     span_metrics,
 )
-from classical_absa.sentiment_classifier import TfidfSvmSentimentClassifier  # noqa: E402
-from classical_absa.text_preprocessing import (  # noqa: E402
+from classical_absa.sentiment_classifier import (
+    TfidfSvmSentimentClassifier,
+)
+from classical_absa.text_preprocessing import (
     align_aspects_to_bio,
     preprocess_text,
 )

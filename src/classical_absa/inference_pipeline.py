@@ -16,7 +16,7 @@ class AspectBasedSentimentAnalyzer:
         self.sentiment_classifier = sentiment_classifier
 
     @classmethod
-    def from_model_directory(cls, model_directory: str | Path) -> "AspectBasedSentimentAnalyzer":
+    def from_model_directory(cls, model_directory: str | Path) -> AspectBasedSentimentAnalyzer:
         """Load the default improved models from a model directory."""
 
         directory = Path(model_directory)

@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Tuple
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
 import pandas as pd
 
 
-def load_semeval_xml(xml_path: str | Path) -> Tuple[pd.DataFrame, pd.DataFrame]:
+def load_semeval_xml(xml_path: str | Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Parse a SemEval ABSA XML file.
 
     Returns a sentence-level dataframe and an aspect-level dataframe. Character
@@ -95,8 +94,8 @@ def validate_annotations(
         else 0
     )
     return {
-        "sentence_count": int(len(sentences)),
-        "aspect_annotation_count": int(len(aspects)),
+        "sentence_count": len(sentences),
+        "aspect_annotation_count": len(aspects),
         "sentences_with_aspects": int(sentences["has_aspect"].sum()),
         "duplicate_sentence_ids": duplicate_sentence_ids,
         "invalid_offsets": invalid_offsets,

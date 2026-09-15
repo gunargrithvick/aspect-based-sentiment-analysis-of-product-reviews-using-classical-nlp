@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Sequence
+from collections.abc import Sequence
 
 from sklearn_crfsuite import CRF
 
@@ -99,7 +99,7 @@ class CRFAspectExtractor:
 
     def fit(
         self, token_sequences: Sequence[Sequence[Token]], label_sequences: Sequence[Sequence[str]]
-    ) -> "CRFAspectExtractor":
+    ) -> CRFAspectExtractor:
         if len(token_sequences) != len(label_sequences):
             raise ValueError("Token and label sequence counts must match.")
         features = [

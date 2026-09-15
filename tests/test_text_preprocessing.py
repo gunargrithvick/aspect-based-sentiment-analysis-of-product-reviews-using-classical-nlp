@@ -1,9 +1,9 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from classical_absa.text_preprocessing import (  # noqa: E402
+from classical_absa.text_preprocessing import (
     align_aspects_to_bio,
     preprocess_text,
     tokenize_with_offsets,

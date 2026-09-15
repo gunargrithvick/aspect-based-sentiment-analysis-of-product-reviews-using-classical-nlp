@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from classical_absa.text_preprocessing import (  # noqa: E402
+from classical_absa.text_preprocessing import (
     align_aspects_to_bio,
     preprocess_text,
     token_records,
@@ -56,8 +56,8 @@ def main() -> None:
 
     token_frame = pd.DataFrame(token_rows)
     summary = {
-        "sentence_count": int(len(sentences)),
-        "token_count": int(len(token_frame)),
+        "sentence_count": len(sentences),
+        "token_count": len(token_frame),
         "aspect_token_count": int((token_frame["bio_label"] != "O").sum()),
         "negated_token_count": int(token_frame["negated"].sum()),
         "pos_distribution": {

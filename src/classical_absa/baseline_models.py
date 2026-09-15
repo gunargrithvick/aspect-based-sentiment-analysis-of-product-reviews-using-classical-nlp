@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from collections import Counter
 import re
+from collections import Counter
 
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -25,7 +25,7 @@ class AspectLexiconExtractor:
         self.aspect_counts: Counter[str] = Counter()
         self.terms: list[str] = []
 
-    def fit(self, aspect_frame: pd.DataFrame) -> "AspectLexiconExtractor":
+    def fit(self, aspect_frame: pd.DataFrame) -> AspectLexiconExtractor:
         counts = Counter(normalize_token(str(term)) for term in aspect_frame["aspect_term"])
         self.aspect_counts = counts
         self.terms = sorted(
@@ -82,7 +82,7 @@ class TfidfLogisticSentimentClassifier:
             random_state=42,
         )
 
-    def fit(self, aspect_frame: pd.DataFrame) -> "TfidfLogisticSentimentClassifier":
+    def fit(self, aspect_frame: pd.DataFrame) -> TfidfLogisticSentimentClassifier:
         contexts = [
             aspect_context(row.sentence_text, int(row.start), int(row.end))
             for row in aspect_frame.itertuples(index=False)

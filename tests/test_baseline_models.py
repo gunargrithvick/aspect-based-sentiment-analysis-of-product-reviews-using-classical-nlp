@@ -1,12 +1,12 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from classical_absa.baseline_models import AspectLexiconExtractor  # noqa: E402
-from classical_absa.feature_engineering import aspect_context  # noqa: E402
+from classical_absa.baseline_models import AspectLexiconExtractor
+from classical_absa.feature_engineering import aspect_context
 
 
 def test_aspect_lexicon_prefers_longest_non_overlapping_match():

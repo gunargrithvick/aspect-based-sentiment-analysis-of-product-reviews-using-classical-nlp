@@ -8,10 +8,9 @@ defined over the original sentence text.
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
 import re
-from typing import Iterable, Sequence
-
+from collections.abc import Iterable, Sequence
+from dataclasses import asdict, dataclass
 
 TOKEN_PATTERN = re.compile(
     r"[A-Za-z]+(?:['’][A-Za-z]+)*|\d+(?:[.,]\d+)?|[^\w\s]",

@@ -3,13 +3,16 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from classical_absa.dataset_loader import load_semeval_xml, validate_annotations  # noqa: E402
+from classical_absa.dataset_loader import (
+    load_semeval_xml,
+    validate_annotations,
+)
 
 
 def main() -> None:

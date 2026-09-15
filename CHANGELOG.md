@@ -22,3 +22,10 @@ All notable project changes will be recorded here.
 - Added a local FastAPI application with a separate HTML, CSS, and JavaScript frontend.
 - Added aspect highlighting, sentiment summaries, result tables, JSON export, health checks, and API documentation.
 - Added Vercel deployment configuration and runtime documentation.
+
+### Changed
+
+- Aligned Python imports and type annotations with the CI lint toolchain.
+- Added repository-wide Ruff configuration and pinned the development Ruff version for reproducible checks.
+- Updated GitHub Actions to current checkout and Python setup action versions and extended linting to the full repository.
+- Regenerated the committed runtime model artifacts through the complete build-and-verification workflow.

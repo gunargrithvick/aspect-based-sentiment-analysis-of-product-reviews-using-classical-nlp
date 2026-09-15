@@ -2,9 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from collections.abc import Iterable
 
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+)
 
 
 def span_metrics(gold_spans: Iterable[tuple[str, int, int]], predicted_spans: Iterable[tuple[str, int, int]]) -> dict[str, float | int]:

@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
+import sys
 from functools import lru_cache
 from pathlib import Path
-import sys
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse
@@ -12,12 +12,10 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from classical_absa.inference_pipeline import AspectBasedSentimentAnalyzer  # noqa: E402
-
+from classical_absa.inference_pipeline import AspectBasedSentimentAnalyzer
 
 app = FastAPI(
     title="Classical Aspect-Based Sentiment Analyzer",

@@ -38,10 +38,10 @@ def main() -> None:
     ).to_csv(tables_dir / "aspects_per_sentence.csv", index=False)
 
     summary = {
-        "sentence_count": int(len(sentences)),
+        "sentence_count": len(sentences),
         "sentences_with_aspects": int(sentences["has_aspect"].sum()),
         "sentences_without_aspects": int((~sentences["has_aspect"]).sum()),
-        "aspect_annotation_count": int(len(aspects)),
+        "aspect_annotation_count": len(aspects),
         "unique_aspect_terms": int(aspects["aspect_normalized"].nunique()),
         "average_sentence_length_characters": round(float(sentences["sentence_text"].str.len().mean()), 2),
         "average_aspects_per_annotated_sentence": round(

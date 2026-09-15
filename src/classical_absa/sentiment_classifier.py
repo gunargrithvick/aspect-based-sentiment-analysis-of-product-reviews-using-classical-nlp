@@ -28,7 +28,7 @@ class TfidfSvmSentimentClassifier:
             for row in aspect_frame.itertuples(index=False)
         ]
 
-    def fit(self, aspect_frame: pd.DataFrame) -> "TfidfSvmSentimentClassifier":
+    def fit(self, aspect_frame: pd.DataFrame) -> TfidfSvmSentimentClassifier:
         contexts = self._contexts(aspect_frame)
         features = self.vectorizer.fit_transform(contexts)
         self.classifier.fit(features, aspect_frame["polarity"].astype(str))
