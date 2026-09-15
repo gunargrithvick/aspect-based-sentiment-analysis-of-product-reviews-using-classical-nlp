@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local data and generated artifacts
+data/raw/**
+data/interim/**
+data/processed/**
+models/**
+outputs/**
+reports/figures/**
+reports/tables/**
+
+# Trained models are required by the local app and Vercel deployment.
+!models/
+!models/*.joblib
+
+# Keep directory placeholders
+!.gitkeep
+
+# Editors and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

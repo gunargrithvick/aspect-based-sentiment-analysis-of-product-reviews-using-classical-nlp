@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Classical NLP aspect-based sentiment analysis for product reviews.">
+    <title>Classical ABSA Analyzer</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <div>
+                <p class="eyebrow">NATURAL LANGUAGE PROCESSING SYSTEM</p>
+                <h1>Aspect-Based Sentiment Analyzer</h1>
+                <p class="subtitle">Understand what customers like or dislike in product reviews.</p>
+            </div>
+            <div class="technology-badge">Classical NLP only</div>
+        </header>
+
+        <main class="layout-grid">
+            <section class="main-column">
+                <article class="card input-card">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">REVIEW ANALYSIS</p>
+                            <h2>Enter a product review</h2>
+                        </div>
+                        <span class="model-status" id="model-status">Checking models...</span>
+                    </div>
+
+                    <div class="example-row" aria-label="Example reviews">
+                        <span class="example-label">Try an example:</span>
+                        <button class="example-button" data-example="The camera is excellent, but the battery life is terrible.">Mixed review</button>
+                        <button class="example-button" data-example="The screen is excellent.">Positive review</button>
+                        <button class="example-button" data-example="The keyboard is terrible.">Negative review</button>
+                    </div>
+
+                    <form id="analysis-form">
+                        <label for="review-text">Product review text</label>
+                        <textarea id="review-text" name="text" rows="7" required placeholder="Example: The display is bright, but the keyboard feels cheap."></textarea>
+                        <div class="form-footer">
+                            <span class="field-help">English product reviews work best with explicit aspect terms.</span>
+                            <button class="primary-button" type="submit" id="analyze-button">
+                                <span>Analyze review</span><span class="button-arrow">→</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="message" id="message" role="alert" hidden></div>
+                </article>
+
+                <section id="results-section" hidden>
+                    <div class="section-heading results-heading">
+                        <div><p class="eyebrow">PREDICTION RESULTS</p><h2>Aspect-level analysis</h2></div>
+                        <button class="secondary-button" id="download-button" type="button">Download JSON</button>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card"><span class="metric-label">Aspects found</span><strong id="aspect-count">0</strong></div>
+                        <div class="metric-card positive-card"><span class="metric-label">Positive</span><strong id="positive-count">0</strong></div>
+                        <div class="metric-card negative-card"><span class="metric-label">Negative</span><strong id="negative-count">0</strong></div>
+                        <div class="metric-card neutral-card"><span class="metric-label">Neutral</span><strong id="neutral-count">0</strong></div>
+                        <div class="metric-card conflict-card"><span class="metric-label">Conflict</span><strong id="conflict-count">0</strong></div>
+                    </div>
+
+                    <article class="card highlighted-card">
+                        <div class="card-heading-row">
+                            <h3>Highlighted review</h3>
+                            <div class="legend">
+                                <span><i class="legend-dot positive-dot"></i>Positive</span>
+                                <span><i class="legend-dot negative-dot"></i>Negative</span>
+                                <span><i class="legend-dot neutral-dot"></i>Neutral</span>
+                                <span><i class="legend-dot conflict-dot"></i>Conflict</span>
+                            </div>
+                        </div>
+                        <p class="highlighted-review" id="highlighted-review"></p>
+                    </article>
+
+                    <article class="card table-card">
+                        <h3>Detected aspects</h3>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead><tr><th>Aspect</th><th>Sentiment</th><th>Text position</th></tr></thead>
+                                <tbody id="results-table"></tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+            </section>
+
+            <aside class="side-column">
+                <article class="card information-card">
+                    <p class="eyebrow">ABOUT THE SYSTEM</p>
+                    <h2>What does it detect?</h2>
+                    <p>The system finds product aspects such as <strong>battery</strong>, <strong>screen</strong>, and <strong>keyboard</strong>, then predicts the sentiment connected to each one.</p>
+                    <div class="pipeline-step"><span class="step-number">01</span><div><strong>Aspect extraction</strong><p>CRF sequence labeling with linguistic features.</p></div></div>
+                    <div class="pipeline-step"><span class="step-number">02</span><div><strong>Sentiment classification</strong><p>TF-IDF features with a Linear SVM.</p></div></div>
+                    <div class="pipeline-step"><span class="step-number">03</span><div><strong>Structured output</strong><p>Aspect, sentiment, and character positions.</p></div></div>
+                </article>
+
+                <article class="card boundary-card">
+                    <p class="eyebrow">PROJECT BOUNDARY</p>
+                    <h3>Built with traditional NLP</h3>
+                    <ul class="boundary-list">
+                        <li>No LLMs or generative AI</li><li>No transformers or pretrained embeddings</li>
+                        <li>No external APIs or hosted services</li><li>Runs locally on the trained models</li>
+                    </ul>
+                </article>
+            </aside>
+        </main>
+
+        <footer class="site-footer">Aspect-Based Sentiment Analysis of Product Reviews Using Classical NLP</footer>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
