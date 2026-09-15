@@ -67,6 +67,8 @@ Read [docs/dataset_guide.md](docs/dataset_guide.md) before adding data.
 
 Current dataset summary: 3,045 sentences, 2,358 aspect annotations, and 955 unique normalized aspect terms. The polarity labels are positive, negative, neutral, and conflict.
 
+The raw XML dataset is intentionally not committed because redistribution permissions may vary. The trained runtime models are included, so the frontend and command-line analyzer work immediately after cloning. To reproduce preprocessing or retrain the models, download the dataset and place the unchanged `Laptop_Train_v2.xml` file in `data/raw/` as described in [docs/dataset_guide.md](docs/dataset_guide.md).
+
 ## Standalone system
 
 The trained system can be run directly from the command line, independently of the browser frontend:
@@ -129,7 +131,7 @@ Development and testing tools are listed separately in `requirements-dev.txt`.
 
 ## Reproducible workflow
 
-1. Put the unchanged source dataset in `data/raw/`.
+1. Put the unchanged source dataset in `data/raw/` when reproducing training.
 2. Parse and convert annotations into `data/interim/`.
 3. Save clean model-ready files in `data/processed/`.
 4. Run experiments from the numbered notebooks in `notebooks/`.
@@ -149,7 +151,7 @@ python scripts/evaluate_and_improve.py
 python scripts/verify_system.py
 ```
 
-To rebuild and verify the complete system in one command:
+To rebuild and verify the complete system in one command after the raw dataset has been added:
 
 ```bash
 python scripts/build_system.py

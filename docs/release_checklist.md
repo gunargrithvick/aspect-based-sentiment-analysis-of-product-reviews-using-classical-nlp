@@ -12,6 +12,8 @@
 - [x] FastAPI browser interface
 - [x] HTML, CSS, and JavaScript frontend
 - [x] Vercel deployment configuration
+- [x] Runtime model artifacts included for deployment
+- [x] Raw dataset excluded with documented reproduction instructions
 
 ## Testing
 

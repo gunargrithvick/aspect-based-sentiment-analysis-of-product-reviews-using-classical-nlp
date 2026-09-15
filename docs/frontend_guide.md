@@ -41,7 +41,7 @@ The frontend calls:
 
 ## Deploy to Vercel
 
-The project is configured for Vercel's Python runtime. The root `app.py` exposes the FastAPI instance as `app`, `vercel.json` includes the trained models and frontend files, and the required runtime dependencies are listed in `requirements.txt`.
+The project is configured for Vercel's Python runtime. The root `app.py` exposes the FastAPI instance as `app`, `vercel.json` includes the trained runtime models and frontend files, and the required runtime dependencies are listed in `requirements.txt`. The raw training dataset is not needed by the deployed application.
 
 Before deploying through Git, make sure the runtime model files `crf_aspect_extractor.joblib` and `svm_sentiment_classifier.joblib` in `models/` are committed. They are intentionally not ignored because the deployed application needs them at runtime.
 
