@@ -95,6 +95,10 @@ Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highli
 
 The screenshots below show the standalone frontend using the trained classical NLP models:
 
+### Complete application flow
+
+<img src="docs/screenshots/frontend-overview.png" alt="Complete frontend application flow" width="900">
+
 ### Review input
 
 <img src="docs/screenshots/frontend-input.png" alt="Frontend review input" width="570">

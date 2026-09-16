@@ -32,3 +32,4 @@ All notable project changes will be recorded here.
 - Added explicit Author and License sections to the root README.
 - Added README architecture, testing, and verified frontend screenshot sections.
 - Re-exported frontend screenshots at higher resolution and set a controlled README display width for sharper rendering.
+- Added a native-resolution overview screenshot showing the complete frontend flow.
