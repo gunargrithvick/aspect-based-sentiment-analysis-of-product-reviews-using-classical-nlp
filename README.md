@@ -91,6 +91,18 @@ python -m uvicorn app:app --reload
 
 Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highlights detected aspects, displays aspect-level sentiment, and allows the results to be downloaded as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
 
+## Screenshots
+
+The screenshots below show the standalone frontend using the trained classical NLP models:
+
+### Review input
+
+![Frontend review input](docs/screenshots/frontend-input.png)
+
+### Aspect-level results
+
+![Frontend aspect-level results](docs/screenshots/frontend-analysis.png)
+
 ## Methodology
 
 The system includes a simple baseline and an improved classical NLP pipeline. The comparison is used to justify the implementation choice:
@@ -102,6 +114,28 @@ The system includes a simple baseline and an improved classical NLP pipeline. Th
 - Negation and local-context features
 
 The detailed design is documented in [docs/methodology.md](docs/methodology.md).
+
+## Architecture
+
+The application is a standalone classical NLP system. The browser frontend sends review text to FastAPI, which loads the saved CRF and TF-IDF/Linear SVM models and returns structured aspect-sentiment results.
+
+```mermaid
+flowchart LR
+    A[Product review] --> B[HTML/CSS/JavaScript frontend]
+    B --> C[FastAPI app.py]
+    C --> D[Text preprocessing]
+    D --> E[CRF aspect extractor]
+    E --> F[TF-IDF and Linear SVM sentiment classifier]
+    F --> G[Aspect, sentiment, and character offsets]
+    G --> B
+    H[SemEval laptop review annotations] --> I[Training scripts]
+    I --> E
+    I --> F
+    E -. saved model .-> J[(models/)]
+    F -. saved model .-> J
+```
+
+See [docs/system_design.md](docs/system_design.md) for module responsibilities and [docs/frontend_guide.md](docs/frontend_guide.md) for the application interface.
 
 ## Installation
 
@@ -169,6 +203,16 @@ The project reports:
 
 The evaluation procedure and result-table template are in [docs/evaluation_plan.md](docs/evaluation_plan.md).
 
+## Testing
+
+Run the automated tests from the project root:
+
+```bash
+python -m pytest -q
+```
+
+The test suite covers preprocessing, token offsets, aspect extraction, baseline models, inference output, API validation, model health, and known positive/negative examples. The repository quality workflow also checks the full repository with Ruff and compiles the Python source files. See [docs/test_plan.md](docs/test_plan.md) for the complete verification plan.
+
 ## Folder structure
 
 ```text
@@ -182,6 +226,7 @@ reports/       Figures, tables, and final report materials
 outputs/       Generated predictions and evaluation results
 frontend/      HTML templates for the browser interface
 public/static/ CSS and JavaScript browser assets
+docs/screenshots/ Verified frontend screenshots used in this README
 app.py         FastAPI application and JSON API
 vercel.json    Vercel deployment configuration
 ```
