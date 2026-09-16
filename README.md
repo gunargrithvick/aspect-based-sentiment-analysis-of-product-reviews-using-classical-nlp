@@ -97,11 +97,11 @@ The screenshots below show the standalone frontend using the trained classical N
 
 ### Review input
 
-![Frontend review input](docs/screenshots/frontend-input.png)
+<img src="docs/screenshots/frontend-input.png" alt="Frontend review input" width="570">
 
 ### Aspect-level results
 
-![Frontend aspect-level results](docs/screenshots/frontend-analysis.png)
+<img src="docs/screenshots/frontend-analysis.png" alt="Frontend aspect-level results" width="570">
 
 ## Methodology
 
