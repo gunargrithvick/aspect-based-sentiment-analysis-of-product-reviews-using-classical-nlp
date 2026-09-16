@@ -29,3 +29,4 @@ All notable project changes will be recorded here.
 - Added repository-wide Ruff configuration and pinned the development Ruff version for reproducible checks.
 - Updated GitHub Actions to current checkout and Python setup action versions and extended linting to the full repository.
 - Regenerated the committed runtime model artifacts through the complete build-and-verification workflow.
+- Added explicit Author and License sections to the root README.

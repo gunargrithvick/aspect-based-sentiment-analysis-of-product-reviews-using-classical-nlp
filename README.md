@@ -213,3 +213,11 @@ vercel.json    Vercel deployment configuration
 ## Limitations and responsible use
 
 The system analyzes explicit text from one English product-review domain. It may struggle with sarcasm, implicit aspects, spelling errors, domain-specific vocabulary, and sentences containing several closely related opinions. Its predictions are for coursework and analysis, not for making high-impact decisions about people or businesses.
+
+## Author
+
+Guna Rithvick
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
