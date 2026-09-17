@@ -215,6 +215,8 @@ Run the automated tests from the project root:
 python -m pytest -q
 ```
 
+The current automated test suite contains 13 tests, and the latest verification passed all 13.
+
 The test suite covers preprocessing, token offsets, aspect extraction, baseline models, inference output, API validation, model health, and known positive/negative examples. The repository quality workflow also checks the full repository with Ruff and compiles the Python source files. See [docs/test_plan.md](docs/test_plan.md) for the complete verification plan.
 
 ## Folder structure
