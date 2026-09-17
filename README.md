@@ -97,7 +97,7 @@ The screenshots below are fresh, native-resolution browser captures of the stand
 
 ### Frontend overview
 
-<a href="docs/screenshots/frontend-overview.png"><img src="docs/screenshots/frontend-overview.png" alt="Complete frontend application flow"></a>
+<a href="docs/screenshots/frontend-overview.png"><img src="docs/screenshots/frontend-overview.png" alt="Frontend overview"></a>
 
 ### Review input
 
