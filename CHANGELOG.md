@@ -34,3 +34,4 @@ All notable project changes will be recorded here.
 - Replaced resized screenshot exports with fresh native-resolution browser captures; the committed evidence is not cropped or artificially upscaled.
 - Updated the README image links so each screenshot opens at its original resolution.
 - Rebalanced frontend result spacing with a consistent vertical stack and equal-height metric cards.
+- Added the verified production Vercel demo link to the README.

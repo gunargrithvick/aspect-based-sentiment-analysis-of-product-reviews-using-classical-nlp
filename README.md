@@ -83,6 +83,8 @@ The command returns structured JSON containing each detected aspect, its sentime
 
 The project also includes a browser-based frontend for the standalone NLP system. It is only an interface around the existing classical NLP pipeline; it does not add an LLM, generative AI, transformer, or external API. It can run locally or be deployed to Vercel.
 
+**Live demo:** [Open the deployed Vercel application](https://aspect-based-sentiment-analysis-of.vercel.app)
+
 Start it from the project root:
 
 ```powershell
