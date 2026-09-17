@@ -1,3 +1,20 @@
+[project]
+name = "aspect-based-sentiment-analysis-classical-nlp"
+version = "1.0.0"
+description = "A classical NLP aspect-based sentiment analysis system for product reviews."
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26,<3",
+    "pandas>=2.1,<3",
+    "scikit-learn>=1.4,<2",
+    "nltk>=3.8,<4",
+    "joblib>=1.3,<2",
+    "sklearn-crfsuite>=0.3.6,<1",
+    "fastapi>=0.110,<1",
+    "uvicorn>=0.29,<1",
+    "jinja2>=3.1,<4",
+]
+
 [tool.ruff]
 target-version = "py312"
 line-length = 120
