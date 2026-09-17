@@ -16,6 +16,8 @@ This repository contains a complete, locally runnable aspect-based sentiment ana
 
 The project is designed as a practical FSD application for a Natural Language Processing course. It includes the NLP pipeline, trained model artifacts, a FastAPI backend, a responsive HTML/CSS/JavaScript frontend, automated tests, evaluation outputs, and deployment configuration.
 
+**Live demo:** [Open the deployed Vercel application](https://aspect-based-sentiment-analysis-of.vercel.app)
+
 ## Highlights
 
 - Extracts explicit product aspects such as `battery life`, `screen`, and `keyboard`.
@@ -92,8 +94,6 @@ python -m uvicorn app:app --reload
 Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highlights detected aspects, displays aspect-level sentiment, and allows the results to be downloaded as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
 
 ## Demo
-
-Try the deployed application here: [Open the live demo](https://aspect-based-sentiment-analysis-of.vercel.app)
 
 Enter an English laptop product review, or choose one of the example reviews. The application highlights detected aspects, assigns positive, negative, neutral, or conflict sentiment, and shows the character positions in the original text. For example:
 
