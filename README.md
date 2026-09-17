@@ -83,8 +83,6 @@ The command returns structured JSON containing each detected aspect, its sentime
 
 The project also includes a browser-based frontend for the standalone NLP system. It is only an interface around the existing classical NLP pipeline; it does not add an LLM, generative AI, transformer, or external API. It can run locally or be deployed to Vercel.
 
-**Live demo:** [Open the deployed Vercel application](https://aspect-based-sentiment-analysis-of.vercel.app)
-
 Start it from the project root:
 
 ```powershell
@@ -92,6 +90,16 @@ python -m uvicorn app:app --reload
 ```
 
 Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highlights detected aspects, displays aspect-level sentiment, and allows the results to be downloaded as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
+
+## Demo
+
+Try the deployed application here: [Open the live demo](https://aspect-based-sentiment-analysis-of.vercel.app)
+
+Enter an English laptop product review, or choose one of the example reviews. The application highlights detected aspects, assigns positive, negative, neutral, or conflict sentiment, and shows the character positions in the original text. For example:
+
+> The camera is excellent, but the battery life is terrible.
+
+The live demo runs the same trained classical NLP pipeline exposed by the local FastAPI application.
 
 ## Screenshots
 

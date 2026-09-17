@@ -35,3 +35,4 @@ All notable project changes will be recorded here.
 - Updated the README image links so each screenshot opens at its original resolution.
 - Rebalanced frontend result spacing with a consistent vertical stack and equal-height metric cards.
 - Added the verified production Vercel demo link to the README.
+- Added a dedicated README Demo section explaining how to try the live application.
