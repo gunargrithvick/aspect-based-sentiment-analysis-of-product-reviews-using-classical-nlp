@@ -31,5 +31,6 @@ All notable project changes will be recorded here.
 - Regenerated the committed runtime model artifacts through the complete build-and-verification workflow.
 - Added explicit Author and License sections to the root README.
 - Added README architecture, testing, and verified frontend screenshot sections.
-- Re-exported frontend screenshots at higher resolution and set a controlled README display width for sharper rendering.
-- Added a native-resolution overview screenshot showing the complete frontend flow.
+- Replaced resized screenshot exports with fresh native-resolution browser captures; the committed evidence is not cropped or artificially upscaled.
+- Updated the README image links so each screenshot opens at its original resolution.
+- Rebalanced frontend result spacing with a consistent vertical stack and equal-height metric cards.

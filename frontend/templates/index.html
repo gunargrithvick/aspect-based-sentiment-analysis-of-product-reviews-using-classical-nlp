@@ -51,41 +51,43 @@
                 </article>
 
                 <section id="results-section" hidden>
-                    <div class="section-heading results-heading">
-                        <div><p class="eyebrow">PREDICTION RESULTS</p><h2>Aspect-level analysis</h2></div>
-                        <button class="secondary-button" id="download-button" type="button">Download JSON</button>
-                    </div>
+                    <div class="results-stack">
+                        <div class="section-heading results-heading">
+                            <div><p class="eyebrow">PREDICTION RESULTS</p><h2>Aspect-level analysis</h2></div>
+                            <button class="secondary-button" id="download-button" type="button">Download JSON</button>
+                        </div>
 
-                    <div class="metrics-grid">
-                        <div class="metric-card"><span class="metric-label">Aspects found</span><strong id="aspect-count">0</strong></div>
-                        <div class="metric-card positive-card"><span class="metric-label">Positive</span><strong id="positive-count">0</strong></div>
-                        <div class="metric-card negative-card"><span class="metric-label">Negative</span><strong id="negative-count">0</strong></div>
-                        <div class="metric-card neutral-card"><span class="metric-label">Neutral</span><strong id="neutral-count">0</strong></div>
-                        <div class="metric-card conflict-card"><span class="metric-label">Conflict</span><strong id="conflict-count">0</strong></div>
-                    </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card"><span class="metric-label">Aspects found</span><strong id="aspect-count">0</strong></div>
+                            <div class="metric-card positive-card"><span class="metric-label">Positive</span><strong id="positive-count">0</strong></div>
+                            <div class="metric-card negative-card"><span class="metric-label">Negative</span><strong id="negative-count">0</strong></div>
+                            <div class="metric-card neutral-card"><span class="metric-label">Neutral</span><strong id="neutral-count">0</strong></div>
+                            <div class="metric-card conflict-card"><span class="metric-label">Conflict</span><strong id="conflict-count">0</strong></div>
+                        </div>
 
-                    <article class="card highlighted-card">
-                        <div class="card-heading-row">
-                            <h3>Highlighted review</h3>
-                            <div class="legend">
-                                <span><i class="legend-dot positive-dot"></i>Positive</span>
-                                <span><i class="legend-dot negative-dot"></i>Negative</span>
-                                <span><i class="legend-dot neutral-dot"></i>Neutral</span>
-                                <span><i class="legend-dot conflict-dot"></i>Conflict</span>
+                        <article class="card highlighted-card">
+                            <div class="card-heading-row">
+                                <h3>Highlighted review</h3>
+                                <div class="legend">
+                                    <span><i class="legend-dot positive-dot"></i>Positive</span>
+                                    <span><i class="legend-dot negative-dot"></i>Negative</span>
+                                    <span><i class="legend-dot neutral-dot"></i>Neutral</span>
+                                    <span><i class="legend-dot conflict-dot"></i>Conflict</span>
+                                </div>
                             </div>
-                        </div>
-                        <p class="highlighted-review" id="highlighted-review"></p>
-                    </article>
+                            <p class="highlighted-review" id="highlighted-review"></p>
+                        </article>
 
-                    <article class="card table-card">
-                        <h3>Detected aspects</h3>
-                        <div class="table-wrapper">
-                            <table>
-                                <thead><tr><th>Aspect</th><th>Sentiment</th><th>Text position</th></tr></thead>
-                                <tbody id="results-table"></tbody>
-                            </table>
-                        </div>
-                    </article>
+                        <article class="card table-card">
+                            <h3>Detected aspects</h3>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Aspect</th><th>Sentiment</th><th>Text position</th></tr></thead>
+                                    <tbody id="results-table"></tbody>
+                                </table>
+                            </div>
+                        </article>
+                    </div>
                 </section>
             </section>
 

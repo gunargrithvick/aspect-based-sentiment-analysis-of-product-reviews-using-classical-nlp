@@ -93,19 +93,19 @@ Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highli
 
 ## Screenshots
 
-The screenshots below show the standalone frontend using the trained classical NLP models:
+The screenshots below are fresh, native-resolution browser captures of the standalone frontend using the trained classical NLP models. They are intentionally not resized or cropped; open an image to view its original pixels.
 
-### Complete application flow
+### Frontend overview
 
-<img src="docs/screenshots/frontend-overview.png" alt="Complete frontend application flow" width="900">
+<a href="docs/screenshots/frontend-overview.png"><img src="docs/screenshots/frontend-overview.png" alt="Complete frontend application flow"></a>
 
 ### Review input
 
-<img src="docs/screenshots/frontend-input.png" alt="Frontend review input" width="570">
+<a href="docs/screenshots/frontend-input.png"><img src="docs/screenshots/frontend-input.png" alt="Frontend review input"></a>
 
 ### Aspect-level results
 
-<img src="docs/screenshots/frontend-analysis.png" alt="Frontend aspect-level results" width="570">
+<a href="docs/screenshots/frontend-analysis.png"><img src="docs/screenshots/frontend-analysis.png" alt="Frontend aspect-level results"></a>
 
 ## Methodology
 
