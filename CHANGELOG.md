@@ -37,3 +37,4 @@ All notable project changes will be recorded here.
 - Added the verified production Vercel demo link to the README.
 - Added a dedicated README Demo section explaining how to try the live application.
 - Moved the verified live-demo link directly below the README Overview section for visibility.
+- Documented the project limitations, responsible-use boundary, and harmless dependency warning in the README.

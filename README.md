@@ -229,6 +229,8 @@ The current automated test suite contains 13 tests, and the latest verification 
 
 The test suite covers preprocessing, token offsets, aspect extraction, baseline models, inference output, API validation, model health, and known positive/negative examples. The repository quality workflow also checks the full repository with Ruff and compiles the Python source files. See [docs/test_plan.md](docs/test_plan.md) for the complete verification plan.
 
+The latest test run also reports one harmless Starlette/AnyIO deprecation warning from the test dependency stack; it does not indicate a project failure.
+
 ## Folder structure
 
 ```text
@@ -273,7 +275,13 @@ vercel.json    Vercel deployment configuration
 
 ## Limitations and responsible use
 
-The system analyzes explicit text from one English product-review domain. It may struggle with sarcasm, implicit aspects, spelling errors, domain-specific vocabulary, and sentences containing several closely related opinions. Its predictions are for coursework and analysis, not for making high-impact decisions about people or businesses.
+The main limitations are:
+
+- The system is specialized for English laptop/product reviews.
+- It may struggle with sarcasm, implicit aspects, spelling errors, and unfamiliar domains.
+- It is intended for coursework and demonstrations, not high-stakes production decisions.
+
+Its predictions should not be used to make high-impact decisions about people or businesses.
 
 ## Author
 
