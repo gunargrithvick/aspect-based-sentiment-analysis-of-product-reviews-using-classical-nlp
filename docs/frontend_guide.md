@@ -20,6 +20,7 @@ Open `http://127.0.0.1:8000` in a browser. The API documentation is available at
 - Aspect count and sentiment summary cards
 - Highlighted aspect terms in the original review
 - Aspect-level sentiment table with character positions
+- Visible project boundary and scope-limitations guidance
 - JSON download of the analysis results
 
 ## Application structure

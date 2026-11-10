@@ -38,3 +38,5 @@ All notable project changes will be recorded here.
 - Added a dedicated README Demo section explaining how to try the live application.
 - Moved the verified live-demo link directly below the README Overview section for visibility.
 - Documented the project limitations, responsible-use boundary, and harmless dependency warning in the README.
+- Added a visible Scope & Limitations card to the frontend so users see the supported domain and responsible-use boundary while using the application.
+- Refreshed the committed frontend screenshots to show the new scope card and current layout.

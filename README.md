@@ -91,7 +91,7 @@ Start it from the project root:
 python -m uvicorn app:app --reload
 ```
 
-Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highlights detected aspects, displays aspect-level sentiment, and allows the results to be downloaded as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
+Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highlights detected aspects, displays aspect-level sentiment, shows the supported scope and limitations, and allows the results to be downloaded as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
 
 ## Demo
 
