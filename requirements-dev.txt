@@ -1,6 +1,7 @@
 # Development-only dependencies.
 -r requirements.txt
 pytest>=8,<9
+httpx>=0.27,<1
 ruff==0.16.7
 nbformat>=5.10,<6
 jupyterlab>=4,<5

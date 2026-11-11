@@ -40,3 +40,6 @@ All notable project changes will be recorded here.
 - Documented the project limitations, responsible-use boundary, and harmless dependency warning in the README.
 - Added a visible Scope & Limitations card to the frontend so users see the supported domain and responsible-use boundary while using the application.
 - Refreshed the committed frontend screenshots to show the new scope card and current layout.
+- Added spelling normalization, implicit aspect rules, sarcasm cues, and domain-aware sentiment handling.
+- Trained and evaluated a logistic regression fallback on UCI Amazon review sentences.
+- Switched API tests to HTTPX's ASGI transport to remove the deprecated Starlette test-client dependency path.

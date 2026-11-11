@@ -6,7 +6,7 @@
     <meta name="description" content="Classical NLP aspect-based sentiment analysis for product reviews.">
     <title>Classical ABSA Analyzer</title>
     <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css?v=2">
 </head>
 <body>
     <div class="page-shell">
@@ -39,9 +39,9 @@
 
                     <form id="analysis-form">
                         <label for="review-text">Product review text</label>
-                        <textarea id="review-text" name="text" rows="7" required placeholder="Example: The display is bright, but the keyboard feels cheap."></textarea>
+                        <textarea id="review-text" name="text" rows="7" maxlength="5000" required placeholder="Example: The display is bright, but the keyboard feels cheap."></textarea>
                         <div class="form-footer">
-                            <span class="field-help">English product reviews work best with explicit aspect terms.</span>
+                            <span class="field-help">Try an English review of a computer, phone, audio device, or appliance.</span>
                             <button class="primary-button" type="submit" id="analyze-button">
                                 <span>Analyze review</span><span class="button-arrow">→</span>
                             </button>
@@ -56,6 +56,8 @@
                             <div><p class="eyebrow">PREDICTION RESULTS</p><h2>Aspect-level analysis</h2></div>
                             <button class="secondary-button" id="download-button" type="button">Download JSON</button>
                         </div>
+
+                        <ul id="analysis-notes" class="analysis-notes" aria-label="Analysis notes" aria-live="polite" hidden></ul>
 
                         <div class="metrics-grid">
                             <div class="metric-card"><span class="metric-label">Aspects found</span><strong id="aspect-count">0</strong></div>
@@ -114,8 +116,8 @@
                     <p class="eyebrow">SCOPE &amp; LIMITATIONS</p>
                     <h3>Use it for product-review analysis</h3>
                     <ul class="limitations-list">
-                        <li>Specialized for English laptop/product reviews.</li>
-                        <li>May struggle with sarcasm, implicit aspects, spelling errors, and unfamiliar domains.</li>
+                        <li>Supports English reviews of computers, phones, audio devices, and common appliances.</li>
+                        <li>Spelling corrections, inferred aspects, and sarcasm flags are estimates. Check the original review before relying on a result.</li>
                         <li>Intended for coursework and demonstrations, not high-stakes decisions.</li>
                     </ul>
                 </article>
@@ -124,6 +126,6 @@
 
         <footer class="site-footer">Aspect-Based Sentiment Analysis of Product Reviews Using Classical NLP</footer>
     </div>
-    <script src="/static/js/app.js"></script>
+    <script src="/static/js/app.js?v=2"></script>
 </body>
 </html>

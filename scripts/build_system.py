@@ -14,6 +14,7 @@ STEPS = [
     "train_baseline.py",
     "train_improved_models.py",
     "evaluate_and_improve.py",
+    "train_product_sentiment.py",
     "verify_system.py",
 ]
 

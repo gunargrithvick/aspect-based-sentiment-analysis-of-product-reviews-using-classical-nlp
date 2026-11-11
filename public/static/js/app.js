@@ -9,15 +9,41 @@ function escapeHtml(value) {
 }
 
 function highlightReview(text, results) {
+    const characters = Array.from(text);
     let output = "";
     let cursor = 0;
     [...results].sort((a, b) => a.start - b.start).forEach((result) => {
-        if (result.start < cursor || result.end > text.length || result.start >= result.end) return;
-        output += escapeHtml(text.slice(cursor, result.start));
-        output += `<mark class="highlight-${escapeHtml(result.sentiment)}" title="${escapeHtml(result.sentiment)}">${escapeHtml(text.slice(result.start, result.end))}</mark>`;
+        if (result.implicit || result.start < cursor || result.end > characters.length || result.start >= result.end) return;
+        output += escapeHtml(characters.slice(cursor, result.start).join(""));
+        output += `<mark class="highlight-${escapeHtml(result.sentiment)}" title="${escapeHtml(result.sentiment)}">${escapeHtml(characters.slice(result.start, result.end).join(""))}</mark>`;
         cursor = result.end;
     });
-    return output + escapeHtml(text.slice(cursor));
+    return output + escapeHtml(characters.slice(cursor).join(""));
+}
+
+function renderNotes(data) {
+    const notes = document.querySelector("#analysis-notes");
+    if (!notes) return;
+    const domains = data.domains ?? [];
+    const corrections = data.corrections ?? [];
+    const messages = [];
+    if (data.domains && !domains.length) {
+        messages.push("No supported product cues found. Try naming the product or feature in the review.");
+    } else if (domains.length) {
+        messages.push(`Detected product scope: ${domains.join(", ")}.`);
+    }
+    if (data.possible_sarcasm) messages.push("Possible sarcasm. Check the sentiment against the original wording.");
+    if (data.summary.uncertain_count) messages.push("Some aspects had too little evidence to assign a sentiment.");
+    if (corrections.length) {
+        const replacements = corrections.map(({ original, replacement }) => `${original} → ${replacement}`);
+        messages.push(`Spelling used for analysis: ${replacements.join(", ")}.`);
+    }
+    notes.replaceChildren(...messages.map((message) => {
+        const item = document.createElement("li");
+        item.textContent = message;
+        return item;
+    }));
+    notes.hidden = !messages.length;
 }
 
 function updateSummary(summary) {
@@ -30,15 +56,17 @@ function updateSummary(summary) {
 function renderResults(data) {
     latestAnalysis = data;
     updateSummary(data.summary);
+    renderNotes(data);
     document.querySelector("#highlighted-review").innerHTML = highlightReview(data.review, data.results);
     const tableBody = document.querySelector("#results-table");
     tableBody.innerHTML = "";
     if (data.results.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="3" class="empty-cell">No explicit product aspects were detected.</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="3" class="empty-cell">No product aspects were detected.</td></tr>';
     } else {
         data.results.forEach((result) => {
             const row = document.createElement("tr");
-            row.innerHTML = `<td><strong>${escapeHtml(result.aspect)}</strong></td><td><span class="sentiment-pill sentiment-${escapeHtml(result.sentiment)}">${escapeHtml(result.sentiment)}</span></td><td>${result.start}–${result.end}</td>`;
+            const position = result.implicit ? "Inferred from context" : `${result.start}–${result.end}`;
+            row.innerHTML = `<td><strong>${escapeHtml(result.aspect)}</strong></td><td><span class="sentiment-pill sentiment-${escapeHtml(result.sentiment)}">${escapeHtml(result.sentiment)}</span></td><td>${position}</td>`;
             tableBody.appendChild(row);
         });
     }

@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "app.py": {
-      "includeFiles": "{models/*.joblib,frontend/templates/**,public/static/**,src/**}",
+      "includeFiles": "{models/*.joblib,models/product_sentiment.json,frontend/templates/**,public/static/**,src/**}",
       "excludeFiles": "{data/**,notebooks/**,tests/**,reports/**,outputs/**,scripts/**,docs/**}"
     }
   }

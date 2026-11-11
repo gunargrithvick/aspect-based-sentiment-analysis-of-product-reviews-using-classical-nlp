@@ -20,6 +20,7 @@ Open `http://127.0.0.1:8000` in a browser. The API documentation is available at
 - Aspect count and sentiment summary cards
 - Highlighted aspect terms in the original review
 - Aspect-level sentiment table with character positions
+- Spelling corrections, inferred aspects, possible sarcasm, and uncertain sentiment
 - Visible project boundary and scope-limitations guidance
 - JSON download of the analysis results
 
@@ -74,4 +75,4 @@ python scripts/build_system.py
 
 ## Scope and limitations
 
-This is a local or Vercel-hosted frontend for the NLP system. It supports English product reviews and works best when the review contains explicit aspects such as `battery`, `screen`, `keyboard`, or `camera`.
+The frontend supports English reviews of computers, phones, audio devices, and common appliances. Inferred aspects have no character span. The app shows which spelling corrections it used for analysis and flags possible sarcasm for manual review. Reviews without supported product cues return no aspects.

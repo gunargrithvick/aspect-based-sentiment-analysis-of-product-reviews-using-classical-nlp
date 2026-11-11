@@ -22,6 +22,7 @@ reports/tables/**
 # Trained models are required by the local app and Vercel deployment.
 !models/
 !models/*.joblib
+!models/product_sentiment.json
 
 # Keep directory placeholders
 !.gitkeep

@@ -48,6 +48,10 @@ textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(54, 88
 .button-arrow { font-size: 1.2rem; line-height: 0.8; }
 .message { margin-top: 16px; padding: 12px 14px; color: var(--negative); background: #fff1f2; border: 1px solid #fecdd3; border-radius: 9px; font-size: 0.86rem; }
 .results-stack { display: grid; gap: 24px; }
+.analysis-notes { margin: 0; padding: 14px 16px 14px 34px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font-size: 0.875rem; line-height: 1.6; overflow-wrap: anywhere; }
+.analysis-notes li + li { margin-top: 4px; }
+.highlighted-review .highlight-uncertain { background: #475569; }
+.sentiment-uncertain { color: #334155; background: #e2e8f0; }
 .results-heading { margin: 0; }
 .metrics-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
 .metric-card { display: grid; min-height: 92px; align-content: space-between; padding: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 13px; }

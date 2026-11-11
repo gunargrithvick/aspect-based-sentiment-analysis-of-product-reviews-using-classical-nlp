@@ -25,8 +25,7 @@ def main() -> None:
     text = args.text or input("Enter a product review: ").strip()
 
     analyzer = AspectBasedSentimentAnalyzer.from_model_directory(PROJECT_ROOT / "models")
-    result = analyzer.analyze(text)
-    print(json.dumps({"review": text, "results": result}, indent=2))
+    print(json.dumps({"review": text, **analyzer.analyze_details(text)}, indent=2))
 
 
 if __name__ == "__main__":

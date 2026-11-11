@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Project Quality](https://github.com/gunargrithvick/aspect-based-sentiment-analysis-of-product-reviews-using-classical-nlp/actions/workflows/quality.yml/badge.svg)](https://github.com/gunargrithvick/aspect-based-sentiment-analysis-of-product-reviews-using-classical-nlp/actions/workflows/quality.yml)
 
-This project identifies product aspects in English laptop reviews and predicts the sentiment associated with each aspect. It is a standalone NLP system implemented with classical linguistic methods and traditional machine learning.
+This project identifies aspects and their sentiment in English reviews of computers, phones, audio devices, and common appliances. It combines classical linguistic rules and traditional machine learning.
 
 Project status: standalone NLP system and local frontend completed and verified.
 
@@ -21,7 +21,8 @@ The project is designed as a practical FSD application for a Natural Language Pr
 ## Highlights
 
 - Extracts explicit product aspects such as `battery life`, `screen`, and `keyboard`.
-- Predicts `positive`, `negative`, `neutral`, or `conflict` sentiment for each detected aspect.
+- Predicts `positive`, `negative`, `neutral`, or `conflict` sentiment, and marks results `uncertain` when applicable.
+- Corrects supported one-edit typos, infers some unspoken aspects from phrases, and flags possible sarcasm.
 - Uses a CRF sequence labeler and TF-IDF with a balanced Linear SVM.
 - Preserves the character positions of predicted aspects in the original review.
 - Provides command-line, JSON API, and browser-based interfaces.
@@ -79,7 +80,7 @@ The trained system can be run directly from the command line, independently of t
 python scripts/analyze_review.py --text "The display is bright, but the keyboard feels cheap."
 ```
 
-The command returns structured JSON containing each detected aspect, its sentiment, and its character positions. The browser interface is available separately below. See [docs/user_guide.md](docs/user_guide.md) and [docs/system_design.md](docs/system_design.md).
+The command returns each detected aspect and its sentiment, along with detected domains, spelling corrections, and a possible-sarcasm flag. Explicit aspects retain their original character positions. Inferred aspects have null positions. See [docs/user_guide.md](docs/user_guide.md) and [docs/system_design.md](docs/system_design.md).
 
 ## Local frontend
 
@@ -95,7 +96,7 @@ Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highli
 
 ## Demo
 
-Enter an English laptop product review, or choose one of the example reviews. The application highlights detected aspects, assigns positive, negative, neutral, or conflict sentiment, and shows the character positions in the original text. For example:
+Enter an English product review or choose one of the examples. The application highlights explicit aspects and labels inferred aspects in the results table. For example:
 
 > The camera is excellent, but the battery life is terrible.
 
@@ -217,6 +218,8 @@ The project reports:
 
 The evaluation procedure and result-table template are in [docs/evaluation_plan.md](docs/evaluation_plan.md).
 
+The optional single-target fallback is a logistic regression model trained on the Amazon subset of Dimitrios Kotzias's [UCI Sentiment Labelled Sentences](https://doi.org/10.24432/C57604) (CC BY 4.0). After deduplication, a fixed split used 789 training and 198 test sentences. Held-out accuracy and macro-F1 were both 75.8%. At the configured abstention threshold, the model classified 69.2% of test sentences with 85.4% accuracy on that subset. These are sentence-level fallback metrics. The API regression cases separately exercise the new aspect and uncertainty behavior. Reproduce the fallback with `python scripts/train_product_sentiment.py`.
+
 ## Testing
 
 Run the automated tests from the project root:
@@ -225,11 +228,9 @@ Run the automated tests from the project root:
 python -m pytest -q
 ```
 
-The current automated test suite contains 13 tests, and the latest verification passed all 13.
+The current automated test suite contains 23 tests, and the latest verification passed all 23.
 
 The test suite covers preprocessing, token offsets, aspect extraction, baseline models, inference output, API validation, model health, and known positive/negative examples. The repository quality workflow also checks the full repository with Ruff and compiles the Python source files. See [docs/test_plan.md](docs/test_plan.md) for the complete verification plan.
-
-The latest test run also reports one harmless Starlette/AnyIO deprecation warning from the test dependency stack; it does not indicate a project failure.
 
 ## Folder structure
 
@@ -277,8 +278,9 @@ vercel.json    Vercel deployment configuration
 
 The main limitations are:
 
-- The system is specialized for English laptop/product reviews.
-- It may struggle with sarcasm, implicit aspects, spelling errors, and unfamiliar domains.
+- The CRF and SVM were trained on English laptop reviews. Vocabulary and sentiment rules extend coverage to phones, audio devices, and common appliances.
+- Spelling correction is limited to unambiguous one-edit matches in the supported vocabulary. Implicit aspects and sarcasm are detected using phrase patterns, so unfamiliar phrasing can be missed.
+- Reviews without supported product cues return no aspect predictions. Detected aspects may have uncertain sentiment.
 - It is intended for coursework and demonstrations, not high-stakes production decisions.
 
 Its predictions should not be used to make high-impact decisions about people or businesses.

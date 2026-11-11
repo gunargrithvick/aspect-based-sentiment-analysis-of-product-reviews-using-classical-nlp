@@ -33,7 +33,7 @@ templates = Jinja2Templates(directory=PROJECT_ROOT / "frontend" / "templates")
 class ReviewRequest(BaseModel):
     """Request body for one product review."""
 
-    text: str = Field(..., min_length=1, description="English product review text")
+    text: str = Field(..., min_length=1, max_length=5000, description="English product review text")
 
 
 @lru_cache(maxsize=1)
@@ -70,12 +70,13 @@ def analyze_review(payload: ReviewRequest) -> dict:
         raise HTTPException(status_code=400, detail="Review text must not be empty.")
 
     try:
-        results = get_analyzer().analyze(review_text)
+        analysis = get_analyzer().analyze_details(review_text)
     except FileNotFoundError as error:
         raise HTTPException(status_code=503, detail=str(error)) from error
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
 
+    results = analysis["results"]
     sentiment_labels = ("positive", "negative", "neutral", "conflict")
     summary = {
         "aspect_count": len(results),
@@ -84,4 +85,5 @@ def analyze_review(payload: ReviewRequest) -> dict:
             for label in sentiment_labels
         },
     }
-    return {"review": review_text, "results": results, "summary": summary}
+    summary["uncertain_count"] = sum(result["sentiment"] == "uncertain" for result in results)
+    return {"review": review_text, **analysis, "summary": summary}
