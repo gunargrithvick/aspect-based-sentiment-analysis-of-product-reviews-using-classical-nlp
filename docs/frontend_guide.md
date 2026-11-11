@@ -21,7 +21,6 @@ Open `http://127.0.0.1:8000` in a browser. The API documentation is available at
 - Highlighted aspect terms in the original review
 - Aspect-level sentiment table with character positions
 - Spelling corrections, inferred aspects, possible sarcasm, and uncertain sentiment
-- Visible project boundary and scope-limitations guidance
 - JSON download of the analysis results
 
 ## Application structure
@@ -73,6 +72,6 @@ If they are missing, rebuild the system first:
 python scripts/build_system.py
 ```
 
-## Scope and limitations
+## Interpreting results
 
 The frontend supports English reviews of computers, phones, audio devices, and common appliances. Inferred aspects have no character span. The app shows which spelling corrections it used for analysis and flags possible sarcasm for manual review. Reviews without supported product cues return no aspects.

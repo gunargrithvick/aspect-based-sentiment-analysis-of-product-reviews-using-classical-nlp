@@ -92,13 +92,15 @@ Start it from the project root:
 python -m uvicorn app:app --reload
 ```
 
-Then open `http://127.0.0.1:8000`. The frontend accepts a product review, highlights detected aspects, displays aspect-level sentiment, shows the supported scope and limitations, and allows the results to be downloaded as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
+Then open `http://127.0.0.1:8000`. The frontend highlights explicit aspects, reports sentiment and analysis notes, and lets you download results as JSON. See [docs/frontend_guide.md](docs/frontend_guide.md) for Vercel deployment instructions.
 
 ## Demo
 
-Enter an English product review or choose one of the examples. The application highlights explicit aspects and labels inferred aspects in the results table. For example:
+Enter an English product review or select **Advanced review** and then **Analyze review**:
 
-> The camera is excellent, but the battery life is terrible.
+> The batery is terrble. It needs recharging every two hours. Great, the phone died again.
+
+The app reports the spelling corrections and highlights the original wording. It infers negative sentiment for battery life from the recharging sentence and marks the phone's sentiment uncertain after detecting possible sarcasm. If a review has no supported product cues, the app returns an empty aspect list with a note.
 
 The live demo runs the same trained classical NLP pipeline exposed by the local FastAPI application.
 
@@ -108,15 +110,11 @@ The screenshots below are fresh, native-resolution browser captures of the stand
 
 ### Frontend overview
 
-<a href="docs/screenshots/frontend-overview.png"><img src="docs/screenshots/frontend-overview.png" alt="Frontend overview"></a>
-
-### Review input
-
-<a href="docs/screenshots/frontend-input.png"><img src="docs/screenshots/frontend-input.png" alt="Frontend review input"></a>
+<a href="docs/screenshots/frontend-overview.jpg"><img src="docs/screenshots/frontend-overview.jpg" alt="Review form with the Advanced review example and a summary of the NLP pipeline"></a>
 
 ### Aspect-level results
 
-<a href="docs/screenshots/frontend-analysis.png"><img src="docs/screenshots/frontend-analysis.png" alt="Frontend aspect-level results"></a>
+<a href="docs/screenshots/frontend-analysis.jpg"><img src="docs/screenshots/frontend-analysis.jpg" alt="Advanced review results showing spelling corrections, a sarcasm flag, one uncertain prediction, and inferred battery life"></a>
 
 ## Methodology
 
@@ -273,17 +271,6 @@ vercel.json    Vercel deployment configuration
 - [Naming conventions](docs/naming_conventions.md)
 - [Contribution guidelines](CONTRIBUTING.md)
 - [Change log](CHANGELOG.md)
-
-## Limitations and responsible use
-
-The main limitations are:
-
-- The CRF and SVM were trained on English laptop reviews. Vocabulary and sentiment rules extend coverage to phones, audio devices, and common appliances.
-- Spelling correction is limited to unambiguous one-edit matches in the supported vocabulary. Implicit aspects and sarcasm are detected using phrase patterns, so unfamiliar phrasing can be missed.
-- Reviews without supported product cues return no aspect predictions. Detected aspects may have uncertain sentiment.
-- It is intended for coursework and demonstrations, not high-stakes production decisions.
-
-Its predictions should not be used to make high-impact decisions about people or businesses.
 
 ## Author
 

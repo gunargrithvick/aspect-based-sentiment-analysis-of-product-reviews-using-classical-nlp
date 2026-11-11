@@ -22,6 +22,8 @@ def test_homepage_serves_frontend() -> None:
     assert response.status_code == 200
     assert "Aspect-Based Sentiment Analyzer" in response.text
     assert "/static/css/styles.css" in response.text
+    assert "Advanced review" in response.text
+    assert "limitations-card" not in response.text
 
 
 def test_health_reports_loaded_models() -> None:

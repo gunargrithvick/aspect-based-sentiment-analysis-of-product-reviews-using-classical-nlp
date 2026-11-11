@@ -43,3 +43,4 @@ All notable project changes will be recorded here.
 - Added spelling normalization, implicit aspect rules, sarcasm cues, and domain-aware sentiment handling.
 - Trained and evaluated a logistic regression fallback on UCI Amazon review sentences.
 - Switched API tests to HTTPX's ASGI transport to remove the deprecated Starlette test-client dependency path.
+- Added a built-in review demonstrating spelling correction, implicit aspects, and sarcasm. Removed the Scope & Limitations card and refreshed the README screenshots.

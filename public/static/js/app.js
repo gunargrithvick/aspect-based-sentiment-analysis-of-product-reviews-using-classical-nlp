@@ -48,6 +48,8 @@ function renderNotes(data) {
 
 function updateSummary(summary) {
     document.querySelector("#aspect-count").textContent = summary.aspect_count;
+    const uncertainCount = document.querySelector("#uncertain-count");
+    if (uncertainCount) uncertainCount.textContent = summary.uncertain_count ?? 0;
     sentimentClasses.forEach((sentiment) => {
         document.querySelector(`#${sentiment}-count`).textContent = summary.sentiment_counts[sentiment];
     });
