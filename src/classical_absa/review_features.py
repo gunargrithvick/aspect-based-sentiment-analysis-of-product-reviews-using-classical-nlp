@@ -21,21 +21,28 @@ ASPECT_PATTERN = re.compile(
     re.IGNORECASE,
 )
 OPINIONS = {
-    **dict.fromkeys("excellent great amazing fantastic love clear crisp quiet powerful reliable good bright".split(), 1),
     **dict.fromkeys(
-        "terrible awful bad hate weak poor muddy muffled tinny noisy loud broken useless disappointing slow flimsy"
-        " leaking leaks overheats died dies freezes crashes broke failed".split(), -1,
+        ("excellent", "great", "amazing", "fantastic", "love", "clear", "crisp", "quiet", "powerful",
+         "reliable", "good", "bright"),
+        1,
+    ),
+    **dict.fromkeys(
+        ("terrible", "awful", "bad", "hate", "weak", "poor", "muddy", "muffled", "tinny", "noisy", "loud",
+         "broken", "useless", "disappointing", "slow", "flimsy", "leaking", "leaks", "overheats", "died", "dies",
+         "freezes", "crashes", "broke", "failed"),
+        -1,
     ),
 }
 SPELL_TARGETS = frozenset(
     word for term in ASPECT_DOMAINS for word in term.split() if len(word) >= 5
 ) | frozenset(word for word in OPINIONS if len(word) >= 5)
-PROTECTED_WORDS = frozenset(
-    "batter better caller carried charged clearer close clean cooling drawer drifts earth early"
-    " faster fitting fridge frozen hearing higher quite quiet rarely really scary slower staring trackball"
-    " louder longer lower morning mystery painter scanner shaken shower signal sound speaker steal still"
-    " stopped stronger sudden supper terrible thinner vacuum walked warmer wiping".split()
-)
+PROTECTED_WORDS = frozenset({
+    "batter", "better", "caller", "carried", "charged", "clearer", "close", "clean", "cooling", "drawer",
+    "drifts", "earth", "early", "faster", "fitting", "fridge", "frozen", "hearing", "higher", "quite", "quiet",
+    "rarely", "really", "scary", "slower", "staring", "trackball", "louder", "longer", "lower", "morning",
+    "mystery", "painter", "scanner", "shaken", "shower", "signal", "sound", "speaker", "steal", "still",
+    "stopped", "stronger", "sudden", "supper", "terrible", "thinner", "vacuum", "walked", "warmer", "wiping",
+})
 WORD_PATTERN = re.compile(r"\b[^\W\d_]+(?:['’\-][^\W\d_]+)*\b")
 FAILURE_PATTERN = re.compile(
     r"\b(?:stop(?:s|ped) working|does(?:n't| not) work|won't (?:work|start|turn on)|"

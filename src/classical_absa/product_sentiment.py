@@ -1,11 +1,12 @@
 """Portable linear model for the single-target product sentiment fallback."""
 
 import re
+from itertools import pairwise
 
 
 def word_features(text: str) -> dict[str, int]:
     words = re.findall(r"[a-z]+(?:'[a-z]+)?", text.lower().replace("’", "'"))
-    return dict.fromkeys([*words, *(f"{a} {b}" for a, b in zip(words, words[1:]))], 1)
+    return dict.fromkeys([*words, *(f"{a} {b}" for a, b in pairwise(words))], 1)
 
 
 def predict_product_sentiment(text: str, model: dict) -> str | None:
